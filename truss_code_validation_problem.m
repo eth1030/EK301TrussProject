@@ -50,10 +50,12 @@ end
 X = [0 0 4 4 8 8 12 12]; %in meters
 Y = [0 4 4 8 8 4 4 0]; %in meters 
 
-
-w = 25; %weight force 25N
-L = zeros(j, 1)
-L(3) = w;  %weight force on joint 3
+wx = 0; %weight force 0N in x direction
+wy = 25; %weight force 25N in y direction
+Lx = zeros(j, 1);
+Lx(3) = wx; %weight force on joint 3
+Ly = zeros(j, 1);
+Ly(3) = wy;  %weight force on joint 3
 
 
 %matrix A that is populated by coefficients of the force for the respective
@@ -71,5 +73,10 @@ for rows = 1:size(input_c,1)
     Cy(input_c(rows,2), rows) = (Y(input_c(rows,1))-Y(input_c(rows,2)))/r(rows);
 end
 
-A = [Cx Sx; Cy Sy]
+A = [Cx Sx; Cy Sy];
 
+A_inv = inv(A);
+
+L = [Lx; Ly];
+
+T = A_inv*L
