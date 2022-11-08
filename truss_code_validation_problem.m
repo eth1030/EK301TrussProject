@@ -41,14 +41,15 @@ Sx(x1, 1) = 1;
 Sy(y1, 2) = 1;
 Sy(y2, 3) = 1;
 
+X = [0 0 4 4 8 8 12 12]; %in meters
+Y = [0 4 4 8 8 4 4 0]; %in meters 
+
 %length of members in vectors
 r = zeros(1,m);
 for i = 1:m
     r(i) = sqrt((X(input_c(i,2))-X(input_c(i,1)))^2 + (Y(input_c(i,2))-Y(input_c(i,1)))^2);
 end
 
-X = [0 0 4 4 8 8 12 12]; %in meters
-Y = [0 4 4 8 8 4 4 0]; %in meters 
 
 wx = 0; %weight force 0N in x direction
 wy = 25; %weight force 25N in y direction
@@ -73,10 +74,29 @@ for rows = 1:size(input_c,1)
     Cy(input_c(rows,2), rows) = (Y(input_c(rows,1))-Y(input_c(rows,2)))/r(rows);
 end
 
+
+%Calculating for the tensions/rxn forces
 A = [Cx Sx; Cy Sy];
 
 A_inv = inv(A);
 
 L = [Lx; Ly];
 
-T = A_inv*L
+T = A_inv*L;
+
+
+%Displaying tension forces and identifying the tension/compression forces
+for t = 1:size(T,1)-3
+    if(T(t,1) < 0)
+        fprintf("T"+t+" = "+T(t,1)+"N (compression)\n")
+    elseif(T(t,1) > 0)
+           fprintf("T"+t+" = "+T(t,1)+"N (tension)\n") 
+    else
+        fprintf("T"+t+" = "+T(t,1)+"N\n")
+    end
+end
+
+%Displaying reaction forces
+fprintf("RX1"+" = "+T(j,1)+"N\n")
+fprintf("RY1"+" = "+T(j+1,1)+"N\n")
+fprintf("RY2"+" = "+T(j+2,1)+"N\n")
