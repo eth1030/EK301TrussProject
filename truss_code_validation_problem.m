@@ -41,6 +41,7 @@ Sx(x1, 1) = 1;
 Sy(y1, 2) = 1;
 Sy(y2, 3) = 1;
 
+%Position of joints
 X = [0 0 4 4 8 8 12 12]; %in meters
 Y = [0 4 4 8 8 4 4 0]; %in meters 
 
@@ -50,13 +51,13 @@ for i = 1:m
     r(i) = sqrt((X(input_c(i,2))-X(input_c(i,1)))^2 + (Y(input_c(i,2))-Y(input_c(i,1)))^2);
 end
 
-
+joint_weight = 3; %weight is applied on this joint
 wx = 0; %weight force 0N in x direction
 wy = 25; %weight force 25N in y direction
 Lx = zeros(j, 1);
-Lx(3) = wx; %weight force on joint 3
+Lx(joint_weight) = wx; %weight force on joint 3
 Ly = zeros(j, 1);
-Ly(3) = wy;  %weight force on joint 3
+Ly(joint_weight) = wy;  %weight force on joint 3
 
 
 %matrix A that is populated by coefficients of the force for the respective
