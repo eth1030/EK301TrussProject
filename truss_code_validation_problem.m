@@ -98,6 +98,6 @@ for t = 1:size(T,1)-3
 end
 
 %Displaying reaction forces
-fprintf("RX1"+" = "+T(j,1)+"N\n")
-fprintf("RY1"+" = "+T(j+1,1)+"N\n")
-fprintf("RY2"+" = "+T(j+2,1)+"N\n")
+fprintf("RX1"+" = "+T(m+1,1)+"N\n")
+fprintf("RY1"+" = "+T(m+2,1)+"N\n")
+fprintf("RY2"+" = "+T(m+3,1)+"N\n")
