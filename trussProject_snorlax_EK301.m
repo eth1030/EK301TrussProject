@@ -41,27 +41,27 @@ A_inv = inv(A);
 
 T = A_inv*L;
 
-fprintf("Load: "+sum(L)+"\n")
+fprintf("Load: "+sum(L)+" oz\n")
 
 %Displaying tension forces and identifying the tension/compression forces
-fprintf("Member forces in N:\n")
+fprintf("Member forces in oz:\n")
 for t = 1:size(T,1)-3
     if(T(t,1) < 0)
-        fprintf("m"+t+" = "+T(t,1)+"N (C)\n")
+        fprintf("m"+t+": "+T(t,1)+" (C)\n")
     elseif(T(t,1) > 0)
-        fprintf("m"+t+" = "+T(t,1)+"N (T)\n") 
+        fprintf("m"+t+": "+T(t,1)+" (T)\n") 
     else
-        fprintf("m"+t+" = "+T(t,1)+"N\n")
+        fprintf("m"+t+": "+T(t,1)+"\n")
     end
 end
 
 %Displaying reaction forces
-fprintf("Reaction forces in N:\n")
-fprintf("Sx1"+" = "+T(m+1,1)+"N\n")
-fprintf("Sy1"+" = "+T(m+2,1)+"N\n")
-fprintf("Sy2"+" = "+T(m+3,1)+"N\n")
+fprintf("Reaction forces in oz:\n")
+fprintf("Sx1"+": "+T(m+1,1)+"\n")
+fprintf("Sy1"+": "+T(m+2,1)+"\n")
+fprintf("Sy2"+": "+T(m+3,1)+"\n")
 
 cost = 10*j + 1*sum(r)*39.37;
 fprintf("Cost of truss: $"+cost+"\n");
-fprintf("Theoretical max load/cost ration in N/$: "+ sum(L)/cost+"\n")
+fprintf("Theoretical max load/cost ration in oz/$: "+ sum(L)/cost+"\n")
 
