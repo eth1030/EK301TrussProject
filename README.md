@@ -8,6 +8,8 @@ How To Run Model:
 5) Results will output in the command window
 
 
+
+
 How To Create new Input Variable File:
 1) Open "truss_variable_creator.m"
 2) Change the variables as need be
