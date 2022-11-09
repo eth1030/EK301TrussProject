@@ -1,4 +1,6 @@
 # EK301TrussProject
+[F22_project_manual_Part2_PreliminaryDesign.pdf](https://github.com/eth1030/EK301TrussProject/files/9974904/F22_project_manual_Part2_PreliminaryDesign.pdf)
+
 
 How To Run Model:
 1) Clone repo
