@@ -9,4 +9,7 @@ How To Run Model:
 
 
 How To Create new Input Variable File:
-1) 
+1) Open "truss_variable_creator.m"
+2) Change the variables as need be
+3) Then, in the command window, input >>save('file_name.mat', 'C', 'L', 'Sx', 'Sy', 'X', 'Y')
+4) The variables will be saved in 'file_name.mat'
