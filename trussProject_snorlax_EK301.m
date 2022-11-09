@@ -16,13 +16,6 @@ for i = 1:m
     r(i) = sqrt((X(input_c(i,2))-X(input_c(i,1)))^2 + (Y(input_c(i,2))-Y(input_c(i,1)))^2);
 end
 
-joint_weight = 3; %weight is applied on this joint
-wx = 0; %weight force 0N in x direction
-wy = 25; %weight force 25N in y direction
-Lx = zeros(j, 1);
-Lx(joint_weight) = wx; %weight force on joint 3
-Ly = zeros(j, 1);
-Ly(joint_weight) = wy;  %weight force on joint 3
 
 
 %matrix A that is populated by coefficients of the force for the respective
@@ -46,23 +39,29 @@ A = [Cx Sx; Cy Sy];
 
 A_inv = inv(A);
 
-L = [Lx; Ly];
-
 T = A_inv*L;
 
+fprintf("Load: "+sum(L)+"\n")
 
 %Displaying tension forces and identifying the tension/compression forces
+fprintf("Member forces in N:\n")
 for t = 1:size(T,1)-3
     if(T(t,1) < 0)
-        fprintf("T"+t+" = "+T(t,1)+"N (compression)\n")
+        fprintf("m"+t+" = "+T(t,1)+"N (C)\n")
     elseif(T(t,1) > 0)
-        fprintf("T"+t+" = "+T(t,1)+"N (tension)\n") 
+        fprintf("m"+t+" = "+T(t,1)+"N (T)\n") 
     else
-        fprintf("T"+t+" = "+T(t,1)+"N\n")
+        fprintf("m"+t+" = "+T(t,1)+"N\n")
     end
 end
 
 %Displaying reaction forces
-fprintf("RX1"+" = "+T(m+1,1)+"N\n")
-fprintf("RY1"+" = "+T(m+2,1)+"N\n")
-fprintf("RY2"+" = "+T(m+3,1)+"N\n")
+fprintf("Reaction forces in N:\n")
+fprintf("Sx1"+" = "+T(m+1,1)+"N\n")
+fprintf("Sy1"+" = "+T(m+2,1)+"N\n")
+fprintf("Sy2"+" = "+T(m+3,1)+"N\n")
+
+cost = 10*j + 1*sum(r)*39.37;
+fprintf("Cost of truss: $"+cost+"\n");
+fprintf("Theoretical max load/cost ration in N/$: "+ sum(L)/cost+"\n")
+
