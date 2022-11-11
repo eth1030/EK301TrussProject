@@ -37,3 +37,9 @@ Cost of truss: $187.5495
 Theoretical max load/cost ratio in oz/$: 0.14503
 max load : 28.404707
 member: 4
+ 
+Design 10 - VALID
+Cost of truss: $173.5291
+Theoretical max load/cost ratio in oz/$: 0.15675
+max load : 28.631944
+member: 6
