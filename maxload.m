@@ -1,29 +1,32 @@
 %% Based off Validation Problem
-% Tm = Rm * Wl
+%% calculate live load
+Wl = 27.2; %Live load applied to joint D
+Rm = T(1:size(T,1)-3) ./ Wl;
+%disp(T(1:size(T,1)-3));
+%disp("Rm:")
+%disp(Rm);
 
-% calculate live load
-Wl = 25; %Live load applied to joint D
-Rm = T(1:13) / Wl;
-disp("Rm:")
-disp(Rm);
-
-% calculate P-crit
-length = r(1:13);
+%% calculate P-crit
+length = r(1:size(T,1)-3);
 
 Pcrit = 2945 ./ (length.^2);
-disp("Pcrit: ")
-disp(Pcrit);
+%disp("Pcrit: ")
+%disp(Pcrit');
 
-% calculate Wfailure
-Wfailure = -Pcrit' ./ Rm;
-disp("Wfailure");
-disp(Wfailure);
+%% calculate Wfailure
+Pcrit = Pcrit';
+%Wfailure = -Pcrit./ Rm;
+Wfailure = rdivide(-Pcrit,Rm);
+%disp("Wfailure");
+%disp(Wfailure);
 
-% find minimum Wfailure
+%% find minimum Wfailure
 Wfailure(Wfailure==-Inf) = max(Wfailure);
+%disp(Wfailure);
 Wfailure = abs(Wfailure);
 buckle = min(Wfailure);
 fprintf("max load : %f\n", buckle);
 B = Wfailure == buckle;
+%disp(B);
 indice = find(B);
 fprintf("member: %d\n",indice);
