@@ -1,0 +1,39 @@
+Design 1
+Cost of truss: $178.3791
+Theoretical max load/cost ratio in oz/$: 0.15248
+max load : 26.030368
+member: 10
+
+Design 2 - INVALID
+Design 3 - INVALID
+Design 4 - INVALID
+
+Design 5 - INVALID (load placement)
+Cost of truss: $196.0661
+Theoretical max load/cost ratio in oz/$: 0.13873
+max load : 29.803106
+member: 9
+ 
+Design 6 - INVALID (max load)
+Cost of truss: $204.7291
+Theoretical max load/cost ratio in oz/$: 0.13286
+max load : 19.883295
+member: 2
+ 
+Design 7 - INVALID (max load)
+Cost of truss: $204.7291
+Theoretical max load/cost ratio in oz/$: 0.13286
+max load : 12.814337
+member: 3
+ 
+Design 8 - INVALID (max load)
+Cost of truss: $147.8303
+Theoretical max load/cost ratio in oz/$: 0.18399
+max load : 12.814337
+member: 2
+ 
+Design 9 - VALID
+Cost of truss: $187.5495
+Theoretical max load/cost ratio in oz/$: 0.14503
+max load : 28.404707
+member: 4
