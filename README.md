@@ -22,3 +22,5 @@ How To Create new Input Variable File:
 save('file_name.mat', 'C', 'L', 'Sx', 'Sy', 'X', 'Y')
 ```
 4) The variables will be saved in `file_name.mat`
+
+Check the wiki for additional information.
